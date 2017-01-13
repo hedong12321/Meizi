@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 apply plugin: 'android-apt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.0"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.spark.meizi"
@@ -16,7 +16,19 @@ android {
         manifestPlaceholders = [
                 UMENG_APP_KEY: "56a0e38867e58ef0f0001dec"
         ]
+        /*jackOptions {
+            enabled true
+        }*/
     }
+
+    /*dexOptions{
+        javaMaxHeapSize "2g"
+    }*/
+
+    /*compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }*/
 
     signingConfigs {
         release {
@@ -46,7 +58,7 @@ android {
     }
 
     productFlavors {
-        wandoujia {}
+        hedd {}
     }
 
     productFlavors.all {
@@ -77,13 +89,13 @@ dependencies {
     compile rootProject.ext.supportV4
     compile rootProject.ext.androiddesign
     compile rootProject.ext.recyclerview
-    compile (rootProject.ext.realm){
-       exclude group: 'org.ow2.asm', module: 'asm'
-        exclude group: 'org.ow2.asm', module: 'asm-commons'
-        exclude group: 'org.ow2.asm', module: 'asm-tree'
-        exclude group: 'org.ow2.asm', module: 'asm-analysis'
-        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-runtime'
-    }
+//    compile (rootProject.ext.realm){
+//        exclude group: 'org.ow2.asm', module: 'asm'
+//        exclude group: 'org.ow2.asm', module: 'asm-commons'
+//        exclude group: 'org.ow2.asm', module: 'asm-tree'
+//        exclude group: 'org.ow2.asm', module: 'asm-analysis'
+//        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-runtime'
+//    }
     compile rootProject.ext.retrofit
     compile rootProject.ext.retrofitgson
     compile rootProject.ext.rxJava
@@ -94,6 +106,7 @@ dependencies {
     compile rootProject.ext.butterknife
     compile rootProject.ext.multidex
     apt rootProject.ext.butterknifeCompiler
+    // annotationProcessor rootProject.ext.butterknifeCompiler
     compile (rootProject.ext.photoview) {
         exclude module: 'support-v4'
     }

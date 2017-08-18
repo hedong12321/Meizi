@@ -22,7 +22,7 @@ public abstract class BaseRecyclerAdapter<D, VH extends BaseRecyclerAdapter.Base
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.meizi_rv_item, parent,
+        View view = LayoutInflater.from(parent.getContext()).inflate(getLayoutId(), parent,
                 false);
         return createViewHolder(view);
     }

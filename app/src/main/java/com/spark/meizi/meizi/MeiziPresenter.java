@@ -49,8 +49,11 @@ public class MeiziPresenter extends BasePresenter<IMeizi> {
         this.realm = realm;
     }
 
-    public void requestMeizi(int page) {
-        getViewRef().getAdapter().addFooter();
+    public void requestMeizi(final int page) {
+        if (1 != page) {
+            getViewRef().getAdapter().addFooter();
+        }
+
         gankApi.latest(COUNT, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -97,7 +100,11 @@ public class MeiziPresenter extends BasePresenter<IMeizi> {
                                         getViewRef().getAdapter().getWrapped().notifyItemRangeInserted(
                                                 list.size() - COUNT - 1,
                                                 list.size() - 1);
-                                        getViewRef().getAdapter().removeFooter();
+
+                                        if (1 != page) {
+                                            getViewRef().getAdapter().removeFooter();
+                                        }
+
                                         getViewRef().setRefresh(false);
                                     }
                                 });

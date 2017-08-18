@@ -50,6 +50,9 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements IDe
     }
 
     private void hideStatusBar() {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        /*
         if (Build.VERSION.SDK_INT < 16) { // old method
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -65,6 +68,7 @@ public class DetailActivity extends BaseActivity<DetailPresenter> implements IDe
                 actionBar.hide();
             }
         }
+        */
     }
 
     @Override
